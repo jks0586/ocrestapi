@@ -1,0 +1,99 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="sidemenuHeader bar-stable">
+      <div class="row">
+        <div class="col col-10" ng-if="userData.account"><div>{{userData.account.fullName.charAt(0)}}</div></div>
+        <div class="col col-10" ng-if="!userData.account"><div>G</div></div>
+        <div class="col col-70">
+          <h3 translate="HELLO"> <span><span></h3>
+          <h5 ng-if="userData.account">{{userData.account.fullName}}</h5>
+          <h5 ng-if="!userData.account" translate="GUEST"></h5>
+        </div>
+        <div class="col col-20" menu-close><a href="#/app/setting"><img src="img/sidemenu/setting-icon.png"/></a></div>
+      </div>
+    </ion-header-bar>
+    <ion-content class="sideMenuContent">
+      <ion-list>
+        <!-- First section -->
+        <ion-item menu-close href="#/app/dashboard"><img src="img/sidemenu/home-icon.png"> Home</ion-item>
+    		<ion-item menu-close ng-if="userData.account" href="#/app/order-history">
+    			<img src="img/sidemenu/order-icon.png"> Order History
+    		</ion-item>
+        <ion-item class="balance" menu-close ng-if="userData.account && userData.account.customer_group_id==2" href="#/app/credits">
+    			<img src="img/sidemenu/card-icon.png"> Your Balance <span>{{CSIGN+userData.account.hdBalance}}</span>
+    		</ion-item>
+        <ion-item menu-close ng-if="userData.account && userData.account.customer_group_id==2" href="#/app/hd-schedule">
+    			<img src="img/sidemenu/order-icon.png"> HD Schedule
+    		</ion-item>
+        <ion-item class="diveder"></ion-item> <!-- Devider -->
+        <!-- Second section -->
+        <ion-item menu-close href="#/app/other-products/3"><img src="img/sidemenu/promotion-icon.png"> Special Promotion</ion-item>
+        <ion-item menu-close href="#/app/other-products/2"><img src="img/sidemenu/new-icon.png"> New Products</ion-item>
+        <ion-item class="diveder"></ion-item><!-- Devider -->
+        <div sir-accordion collection="accordionArray" config="accordionConfig" class="categoryaccordion"></div>
+        <ion-item class="diveder"></ion-item><!-- Devider -->
+        <ion-item menu-close href="#/app/feedback"><img src="img/sidemenu/feedback-icon.png"> Feedback</ion-item>
+        <ion-item menu-close href="#/app/aboutus"><img src="img/sidemenu/info-icon.png"> About and Contact Us</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+
+  <ion-side-menu side="right">
+    <ion-header-bar class="sidemenuHeader bar-stable" id="{{arabOject.cssclass}}">
+      <div class="row">
+        <div class="col col-10"><div>{{userData.account.fullName.charAt(0)}}</div></div>
+        <div class="col col-70">
+          <h3 translate="HELLO"> <span><span></h3>
+          <h5>{{userData.account.fullName}}</h5>
+        </div>
+        <div class="col col-20" menu-close><a href="#/app/setting"><img src="img/sidemenu/setting-icon.png"/></a></div>
+      </div>
+    </ion-header-bar>
+    <ion-content class="sideMenuContent">
+      <ion-list class="{{arabOject.cssclass}}">
+        <!-- First section -->
+        <ion-item menu-close href="#/app/dashboard">
+			<img src="img/sidemenu/home-icon.png"> <span translate="HOME"></span>
+		</ion-item>
+        <ion-item menu-close ng-if="userData.account" href="#/app/order-history">
+          <img src="img/sidemenu/order-icon.png"> <span translate="ORDER-HISTORY"></span>
+        </ion-item>
+		<ion-item class="balance" ng-if="userData.account && userData.account.customer_group_id==2" menu-close href="#/app/credits">
+			<img src="img/sidemenu/card-icon.png"> <span translate="YOUR-BALANCE"></span> <span class="balText">{{CSIGN+userData.account.hdBalance}}</span>
+		</ion-item>
+		<ion-item menu-close ng-if="userData.account && userData.account.customer_group_id==2"  href="#/app/hd-schedule">
+			<img src="img/sidemenu/order-icon.png"> <span translate="HDSCHEDULE"></span>
+		</ion-item>
+
+        <ion-item class="diveder"></ion-item> <!-- Devider -->
+
+        <ion-item menu-close href="#/app/other-products/promo">
+    			<img class="newimg" src="img/sidemenu/PromotionAr.png"> <span translate="SPECIAL-PROMOTION"></span>
+    		</ion-item>
+        <ion-item menu-close href="#/app/other-products/new">
+    			<img class="newimg" src="img/sidemenu/NewAr.png"> <span translate="NEW-PRODUCTS"></span>
+    		</ion-item>
+
+        <ion-item class="diveder"></ion-item> <!-- Devider -->
+
+		      <div sir-accordion collection="accordionArray" config="accordionConfig" class="categoryaccordion"></div>
+        <ion-item class="diveder"></ion-item> <!-- Devider -->
+
+        <ion-item menu-close href="#/app/feedback"><img src="img/sidemenu/feedback-icon.png"> <span translate="FEEDBACK"></span></ion-item>
+        <ion-item menu-close href="#/app/aboutus"><img src="img/sidemenu/info-icon.png"> <span translate="ABOUT-US"></span></ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

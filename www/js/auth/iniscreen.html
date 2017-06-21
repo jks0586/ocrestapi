@@ -1,0 +1,76 @@
+<ion-view hide-nav-bar="true" can-swipe-back="false">
+  <ion-content class="initial-screen" id={{arabOject.cssclass}}>
+      <div class="overlay">
+        <!-- <img src="img/boy-with-milk.jpg"> -->
+        <!-- Back buttons -->
+        <div class="backButton {{screenIndex==3 ? 'showDiv' : 'hideDiv'}}"><button class="button ion-android-arrow-back" ng-click="showForm(2)"></button></div>
+        <div class="backButton {{screenIndex==1 ? 'showDiv' : 'hideDiv'}}"><button class="button ion-android-arrow-back" ng-click="showForm(0)"></button></div>
+        <div class="backButton {{screenIndex==2 ? 'showDiv' : 'hideDiv'}}"><button class="button ion-android-arrow-back" ng-click="showForm(0)"></button></div>
+		    <div class="backButton {{screenIndex==6 ? 'showDiv' : 'hideDiv'}}"><button class="button ion-android-arrow-back" ng-click="showForm(1)"></button></div>
+        <div class="backButton {{screenIndex==5 ? 'showDiv' : 'hideDiv'}}"><button class="button ion-android-arrow-back" ng-click="showForm(1)"></button></div>
+      </div>
+        <div class="displayPortion {{screenIndex==0 ? 'showDiv' : 'hideDiv'}}">
+         <div class="formContainer">
+            <div class="section-container">
+              <div class="row">
+                <div class="col loginCol" ng-repeat="tobj in authSectionData" ng-click="showForm($index+1)">
+                  <div class="border-around">
+                    <img ng-src="{{tobj.img}}">
+                  </div>
+                  <h4 translate="{{tobj.title}}"></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Skkip button-->
+          <div class="row skipButton">
+            <div class="col">
+              <a class="button button-small button-block bounceIn" href="#/app/dashboard" translate="SKIP"></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Login Form-->
+        <div ng-include="'js/auth/inc-login.html'" class="{{screenIndex==1 ? 'showDiv' : 'hideDiv'}} {{arabCss}}"></div>
+
+		    <!-- OTP Form in Login-->
+        <div ng-include="'js/auth/inc-otp-login.html'" class="{{screenIndex==6 ? 'showDiv' : 'hideDiv'}} {{arabCss}}"></div>
+
+        <!-- Registration Form -->
+        <div ng-include="'js/auth/inc-register.html'" class="{{screenIndex==2 ? 'showDiv' : 'hideDiv'}} {{arabCss}}"></div>
+
+        <!-- OTP Form Register -->
+        <div ng-include="'js/auth/inc-otp-register.html'" class="{{screenIndex==3 ? 'showDiv' : 'hideDiv'}} {{arabCss}}"></div>
+
+        <!-- Detail Register Form -->
+        <div ng-include="'js/auth/inc-detail-register.html'" class="{{screenIndex==4 ? 'showDiv' : 'hideDiv'}} {{arabCss}}"></div>
+
+        <!-- Forgot password form -->
+        <div ng-include="'js/auth/inc-forgotPassword.html'" class="{{screenIndex==5 ? 'showDiv' : 'hideDiv'}} {{arabCss}}"></div>
+
+        <script id="error-list.html" type="text/ng-template">
+          <div class="error" ng-message="minlength"><span translate="MIN-LENGTH"></span></div>
+          <div class="error" ng-message="maxlength"><span translate="MAX-LENGTH"></span></div>
+          <div class="error" ng-message="email">{{ 'VALID-EMAIL' | translate }}</div>
+          <div class="error" ng-message="phonenumber">{{ 'VALIDPHONE' | translate }}</div>
+          <div class="error" ng-message="pattern">{{ 'VALIDPHONE' | translate }}</div>
+        </script>
+        <script id="phone-validate.html" type="text/ng-template">
+    			<div class="error" ng-message="minlength">  <span translate="VALIDMINPHONECHARACTER"></span> </div>
+    			<div class="error" ng-message="maxlength"> <span translate="VALIDMAXPHONECHARACTER"></span>	</div>
+  			</script>
+        <script id="password-validate.html" type="text/ng-template">
+      	  <div class="error" ng-message="minlength"><span translate="VALIDMINPASSWORD"></span>  </div>
+      	  <div class="error" ng-message="maxlength"><span translate="VALIDMAXPASSWORD"></span>  </div>
+      	  <div class="error" ng-message="pattern"><span translate="VALIDMINPASSWORD"></span>  </div>
+      	  <div class="error" ng-message="confirm"><span translate="PASSWORDMISMATCH"></span>  </div>
+    	  </script>
+        <script id="error-otp.html" type="text/ng-template">
+          <div class="error" ng-message="pattern"><span translate="VALIDOTP"></span></div>
+        </script>
+        <script id="error-addr.html" type="text/ng-template">
+          <div class="error" ng-message="minlength" ><span translate="MIN-LENGTHFLOOR"></span></div>
+          <div class="error" ng-message="maxlength"><span translate="MIN-LENGTH"></span></div>
+        </script>
+  </ion-content>
+</ion-view>
