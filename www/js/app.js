@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic','starter.controllers','ngStorage','ngCordova','pascalprecht.translate'])
+angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -28,41 +28,11 @@ angular.module('starter', ['ionic','starter.controllers','ngStorage','ngCordova'
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
-
-  //selectboxProvider.setTemplateUrl('lib/ionic-select-box/dist/templates/output-template.html');
-  //selectboxProvider.setModalTemplateUrl('lib/ionic-select-box-select-box/dist/templates/input-template.html');
-
-  //$translateProvider.translations('en',eng_langData);
-  //$translateProvider.translations('ar',arb_langData);
-  $ionicConfigProvider.views.transition('none');
-  //--This has been added for the ios device goes blank issue----
-  $ionicConfigProvider.views.swipeBackEnabled(false);
-
-  $stateProvider
-  .state('app', {
-      url: '/app',
-      abstract: true,
-      templateUrl: 'templates/menu.html',
-      controller: 'AppCtrl'
-    })
-  /*  .state('app.iniscreen', {
-      url: '/iniscreen',
-      views: {
-        'menuContent': {
-          templateUrl: 'js/auth/iniscreen.html',
-  		    controller: 'IniscreenCtrl'
-        }
-      }
-    })
-    .state('app.language', {
-      url: '/language',
-      views: {
-        'menuContent': {
-          templateUrl: 'js/auth/language.html',
-  		    controller: 'LanguageCtrl'
-        }
-      }
-    })*/
-    //$urlRouterProvider.otherwise('/app/language');
-});
+.controller('TodoCtrl', function($scope) { console.log('gggg');
+  $scope.tasks = [
+    { title: 'Collect coins' },
+    { title: 'Eat mushrooms' },
+    { title: 'Get high enough to grab the flag' },
+    { title: 'Find the Princess' }
+  ];
+})
