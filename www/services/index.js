@@ -1,1 +1,1 @@
-angular.module('starter.services', ['ionic']);
+angular.module('services', ['ionic']);

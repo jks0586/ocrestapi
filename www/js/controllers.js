@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
-.controller('AppCtrl', function($scope,$rootScope) {
-  console.log('dddd');
+angular.module('controllers', [])
+.controller('ocrestapiCtrl', function($scope,$rootScope) {
+
 })
